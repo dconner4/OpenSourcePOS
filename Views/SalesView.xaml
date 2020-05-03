@@ -8,11 +8,11 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding SalesViewModel, Source={StaticResource ViewModelLocator}}">
     <UserControl.Resources>
-        <Style TargetType="{x:Type Button}" x:Key="SalesButton">
-            <Setter Property="Background" Value="AliceBlue"/>
-            <Setter Property="Padding" Value="25"/>
-            <Setter Property="Margin" Value="5, 0, 5, 5"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="StyleDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -51,7 +51,7 @@
         </Grid>
         <StackPanel Orientation="Vertical"
                     Grid.Column="1">
-            <Button Style="{StaticResource SalesButton}">Tender</Button>
+            <Button Style="{StaticResource NormalButton}">Tender</Button>
         </StackPanel>
     </Grid>
 </UserControl>

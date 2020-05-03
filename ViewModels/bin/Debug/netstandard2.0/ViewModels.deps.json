@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "cfe1dc2a80602aef150a12815387068463a61a0d"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
@@ -10,7 +10,8 @@
       "ViewModels/1.0.0": {
         "dependencies": {
           "Models": "1.0.0",
-          "NETStandard.Library": "2.0.3"
+          "NETStandard.Library": "2.0.3",
+          "Services": "1.0.0"
         },
         "runtime": {
           "ViewModels.dll": {}
@@ -26,6 +27,11 @@
         "runtime": {
           "Models.dll": {}
         }
+      },
+      "Services/1.0.0": {
+        "runtime": {
+          "Services.dll": {}
+        }
       }
     }
   },
@@ -38,7 +44,7 @@
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pKoUo6WpyeFu/2lgBGmcXu8hq9AdABIk7fZcn3PgAhjCmceCKO/2i1G+NLuHU5oEl0nwD9O7e5Ada4JUhf0kKQ==",
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
@@ -50,6 +56,11 @@
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
     "Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\Cole\Desktop\OpenSourcePOS\OpenSourcePOS\Views\obj\Debug\
+C:\Users\purpl\OpenSourcePOS\Views\obj\Debug\
 Views
 none
 false
 DEBUG;TRACE
 
-2-846836549
+4572065464
 
-3-1259576638
+4796352274
 151984215308
-LoginView.xaml;SalesView.xaml;
+InventoryView.xaml;LoginView.xaml;SalesView.xaml;StyleDictionary.xaml;
 
 False
 

@@ -1,34 +1,30 @@
-﻿namespace Models
+﻿using Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
+
+namespace Models
 {
     /// <summary>
     /// Sales Item for the SalesView.
     /// </summary>
-    public class SaleItem
+    public class SaleItem : IItem
     {
-        /// <summary>
-        /// The sku number of the item.
-        /// </summary>
-        /// <example>
-        /// "12345", "1234-5", "1-2345" etc
-        /// </example>
+        [Key]
+        public long Id { get; set; }
+
+        /// <inheritdoc cref="IItem"/>
         public string Sku { get; set; }
 
-        /// <summary>
-        /// A short description of the item.
-        /// </summary>
-        /// <example>
-        /// Apples, Toilet Paper, Chicken Thighs
-        /// </example>
-        public string ShortDescription { get; set; }
+        [MaxLength(ErrorMessage = "Title is to long. Must be no more than 128 characters")]
+        /// <inheritdoc cref="IItem"/>
+        public string Title { get; set; }
 
-        /// <summary>
-        /// The quantity of items being sold.
-        /// </summary>
+        /// <inheritdoc cref="IItem"/>
+        public string Description { get; set; }
+
+        /// <inheritdoc cref="IItem"/>
         public int Quantity { get; set; }
 
-        /// <summary>
-        /// The base price of the item.
-        /// </summary>
+        /// <inheritdoc cref="IItem"/>
         public double Price { get; set; }
 
         /// <summary>

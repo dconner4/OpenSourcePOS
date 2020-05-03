@@ -30,11 +30,12 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "pKoUo6WpyeFu/2lgBGmcXu8hq9AdABIk7fZcn3PgAhjCmceCKO/2i1G+NLuHU5oEl0nwD9O7e5Ada4JUhf0kKQ==",
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
@@ -178,23 +179,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Cole\\.nuget\\packages\\": {},
+    "C:\\Users\\purpl\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cole\\Desktop\\OpenSourcePOS\\OpenSourcePOS\\Models\\Models.csproj",
+      "projectUniqueName": "C:\\Users\\purpl\\OpenSourcePOS\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "C:\\Users\\Cole\\Desktop\\OpenSourcePOS\\OpenSourcePOS\\Models\\Models.csproj",
-      "packagesPath": "C:\\Users\\Cole\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cole\\Desktop\\OpenSourcePOS\\OpenSourcePOS\\Models\\obj\\",
+      "projectPath": "C:\\Users\\purpl\\OpenSourcePOS\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\purpl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\purpl\\OpenSourcePOS\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Cole\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\purpl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -226,10 +227,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Windows;
 
 namespace OpenSourcePOS
@@ -13,5 +8,12 @@ namespace OpenSourcePOS
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            using(LocalDatabaseContext context = new LocalDatabaseContext())
+            {
+                context.Database.Migrate();
+            }
+        }
     }
 }

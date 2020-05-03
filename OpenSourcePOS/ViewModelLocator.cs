@@ -1,5 +1,4 @@
 ﻿using ViewModels;
-using ViewModels.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace OpenSourcePOS

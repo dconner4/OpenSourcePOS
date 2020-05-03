@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using Models;
-using ViewModels.Interfaces;
 
 namespace ViewModels
 {
@@ -13,19 +12,18 @@ namespace ViewModels
     {
         public SalesViewModel()
         {
-            int x = 0;
             ItemList = new ObservableCollection<SaleItem>();
             ItemList.Add(new SaleItem
             {
                 Sku = "1234",
-                ShortDescription = "Apples",
+                Title = "Apples",
                 Quantity = 5,
                 Price = 1.234
             });
             ItemList.Add(new SaleItem
             {
                 Sku = "5678",
-                ShortDescription = "Bananas",
+                Title = "Bananas",
                 Quantity = 10,
                 Price = 5.678
             });
