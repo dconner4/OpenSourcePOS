@@ -8,7 +8,7 @@ namespace LocalRepository.Context
         private static readonly string localRepositoryPath = "openSourcePOS.db";
 
         /// <summary>
-        /// Confiure the Data Context with a SQLite database
+        /// Configure the Data Context with a SQLite database
         /// </summary>
         /// <param name="optionsBuilder">The options to configure the Data Context with</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

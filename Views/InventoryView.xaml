@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding InventoryViewModel, Source={StaticResource ViewModelLocator}}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,7 +19,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0">
+        <ListView Grid.Column="0"
+                  ItemsSource="{Binding InventoryList}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Sku" Width="100" DisplayMemberBinding="{Binding Sku}"/>
@@ -30,7 +32,7 @@
         </ListView>
         <StackPanel Orientation="Vertical"
                     Grid.Column="1">
-            <Button Style="{StaticResource NormalButton}">Select Item</Button>
+            <Button Style="{StaticResource NormalButton}" Command="{Binding NewInventoryItem}">Select Item</Button>
         </StackPanel>
     </Grid>
 </UserControl>

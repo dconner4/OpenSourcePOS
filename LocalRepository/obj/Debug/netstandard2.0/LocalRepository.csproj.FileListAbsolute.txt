@@ -1,5 +1,6 @@
 C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\LocalRepository.deps.json
 C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\LocalRepository.dll
+C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\LocalRepository.pdb
 C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\Models.dll
 C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.dll
 C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\System.Configuration.dll
@@ -9,10 +10,9 @@ C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\System.Com
 C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\System.Configuration.xml
 C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\System.Security.xml
 C:\Users\purpl\OpenSourcePOS\LocalRepository\obj\Debug\netstandard2.0\LocalRepository.csprojAssemblyReference.cache
+C:\Users\purpl\OpenSourcePOS\LocalRepository\obj\Debug\netstandard2.0\LocalRepository.csproj.CoreCompileInputs.cache
 C:\Users\purpl\OpenSourcePOS\LocalRepository\obj\Debug\netstandard2.0\LocalRepository.AssemblyInfoInputs.cache
 C:\Users\purpl\OpenSourcePOS\LocalRepository\obj\Debug\netstandard2.0\LocalRepository.AssemblyInfo.cs
 C:\Users\purpl\OpenSourcePOS\LocalRepository\obj\Debug\netstandard2.0\LocalRepository.csproj.CopyComplete
-C:\Users\purpl\OpenSourcePOS\LocalRepository\bin\Debug\netstandard2.0\LocalRepository.pdb
-C:\Users\purpl\OpenSourcePOS\LocalRepository\obj\Debug\netstandard2.0\LocalRepository.csproj.CoreCompileInputs.cache
 C:\Users\purpl\OpenSourcePOS\LocalRepository\obj\Debug\netstandard2.0\LocalRepository.dll
 C:\Users\purpl\OpenSourcePOS\LocalRepository\obj\Debug\netstandard2.0\LocalRepository.pdb

@@ -24,7 +24,7 @@ namespace Services
         public bool CanExecute(object parameter) => true;
 
         /// <summary>
-        /// Parameterless overload of <see cref="Execute(object)"/> to make method less clunky
+        /// Parameter-less overload of <see cref="Execute(object)"/> to make method less clunky
         /// </summary>
         public void Execute() => Execute(null);
         

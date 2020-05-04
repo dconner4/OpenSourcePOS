@@ -9,7 +9,7 @@
         Title="OpenSourcePOS" Height="450" Width="800"
         Background="LightGray">
     <DockPanel>
-        <views:SalesView/>
+        <views:InventoryView/>
 
     </DockPanel>
 </Window>
