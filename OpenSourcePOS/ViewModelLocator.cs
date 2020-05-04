@@ -8,9 +8,9 @@ namespace OpenSourcePOS
     /// </summary>
     public class ViewModelLocator
     {
-        public SalesViewModel SalesViewModel => serviceProvider.GetService(typeof(SalesViewModel)) as SalesViewModel;
+        public SalesViewModel SalesViewModel => _serviceProvider.GetService(typeof(SalesViewModel)) as SalesViewModel;
 
-        private ServiceProvider serviceProvider;
+        private readonly ServiceProvider _serviceProvider;
 
         public ViewModelLocator()
         {
@@ -18,7 +18,7 @@ namespace OpenSourcePOS
 
             RegisterViewModels(serviceCollection);
 
-            serviceProvider = serviceCollection.BuildServiceProvider();
+            _serviceProvider = serviceCollection.BuildServiceProvider();
         }
         /// <summary>
         /// 

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Views", "Views\Views.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{D84D4829-7009-4B1A-82B3-CC333505955A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalRepository", "LocalRepository\LocalRepository.csproj", "{C43C0E20-EF78-46DE-B393-E20B15D6EBBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D84D4829-7009-4B1A-82B3-CC333505955A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D84D4829-7009-4B1A-82B3-CC333505955A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D84D4829-7009-4B1A-82B3-CC333505955A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C43C0E20-EF78-46DE-B393-E20B15D6EBBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C43C0E20-EF78-46DE-B393-E20B15D6EBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C43C0E20-EF78-46DE-B393-E20B15D6EBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C43C0E20-EF78-46DE-B393-E20B15D6EBBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

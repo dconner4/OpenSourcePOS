@@ -319,3 +319,5 @@ C:\Users\purpl\OpenSourcePOS\OpenSourcePOS\bin\Debug\Newtonsoft.Json.xml
 C:\Users\purpl\OpenSourcePOS\OpenSourcePOS\obj\Debug\OpenSourcePOS_Content.g.cs
 C:\Users\purpl\OpenSourcePOS\OpenSourcePOS\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\purpl\OpenSourcePOS\OpenSourcePOS\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+C:\Users\purpl\OpenSourcePOS\OpenSourcePOS\bin\Debug\LocalRepository.dll
+C:\Users\purpl\OpenSourcePOS\OpenSourcePOS\bin\Debug\LocalRepository.pdb
