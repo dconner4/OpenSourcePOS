@@ -15,8 +15,7 @@ namespace LocalRepository.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite($"Data Source = {localRepositoryPath}",
-                    x => x.MigrationsAssembly("LocalRepository"));
+                optionsBuilder.UseSqlite($"Data Source = {localRepositoryPath}");
             }
         }
 

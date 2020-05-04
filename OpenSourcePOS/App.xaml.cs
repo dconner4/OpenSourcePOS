@@ -1,5 +1,7 @@
-﻿using System.Windows;
-
+﻿using System;
+using System.Windows;
+using LocalRepository.Context;
+using Microsoft.EntityFrameworkCore;
 namespace OpenSourcePOS
 {
     /// <summary>
@@ -7,5 +9,12 @@ namespace OpenSourcePOS
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            using (var context = new LocalDatabaseContext())
+            {
+                context.Database.Migrate();
+            }
+        }
     }
 }

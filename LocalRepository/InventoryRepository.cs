@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LocalRepository.Context;
 using LocalRepository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace LocalRepository
@@ -13,7 +14,8 @@ namespace LocalRepository
         {
             using (var context = new LocalDatabaseContext())
             {
-                return context.InventoryItems;
+                context.InventoryItems.Load();
+                return context.InventoryItems.ToList();
             }
         }
         /// <inheritdoc cref="IInventoryRepository"/>
