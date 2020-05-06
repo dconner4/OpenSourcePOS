@@ -12,8 +12,8 @@ namespace LocalRepository.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Sku = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true),
+                    Sku = table.Column<string>(nullable: false),
+                    Title = table.Column<string>(maxLength: 125, nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Cost = table.Column<double>(nullable: false),
                     Price = table.Column<double>(nullable: false),

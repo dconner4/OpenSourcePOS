@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Models;
@@ -12,7 +10,11 @@ namespace ViewModels
     public class InventoryViewModel : BindableBase
     {
 
+        // Dependency Injection
         private readonly IInventoryRepository _inventoryRepository;
+
+        // Fields
+        private InventoryItem _currentInventoryItem;
 
         public InventoryViewModel(IInventoryRepository inventoryRepository)
         {
@@ -21,19 +23,18 @@ namespace ViewModels
             InventoryList = new ObservableCollection<InventoryItem>(_inventoryRepository.GetInventoryItems());
             CurrentInventoryItem = InventoryList.FirstOrDefault();
 
-            CreateNewInventoryItemCommand= new RelayCommand(CreateNewInventoryItem);
             AddOrUpdateInventoryItemCommand = new AsyncRelayCommand(AddOrUpdateInventoryItem);
+            AddItemCommand = new RelayCommand(AddItem);
         }
 
-        private void AddItem()
-        {
-
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ObservableCollection<InventoryItem> InventoryList { get; set; }
 
-        private InventoryItem _currentInventoryItem;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public InventoryItem CurrentInventoryItem
         {
             get => _currentInventoryItem;
@@ -44,17 +45,21 @@ namespace ViewModels
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public RelayCommand AddItemCommand { get; set; }
 
-        public RelayCommand CreateNewInventoryItemCommand { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public AsyncRelayCommand AddOrUpdateInventoryItemCommand { get; set; }
 
-        private void CreateNewInventoryItem()
-        {
-            int x = 0;
-        }
-
+        #region Private Methods
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private async Task AddOrUpdateInventoryItem()
         {
             //Check if the item is in the database
@@ -68,5 +73,14 @@ namespace ViewModels
             //Update item in the database
             await _inventoryRepository.UpdateInventoryItem(CurrentInventoryItem);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void AddItem()
+        {
+
+        }
+        #endregion
     }
 }
