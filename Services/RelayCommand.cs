@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Services
@@ -10,10 +11,18 @@ namespace Services
     {
         private Action<object> _execute;
         private Func<object, bool> _canExecute;
-        
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+
+        public RelayCommand(Action execute) : this(execute, () => true) { }
+
+        public RelayCommand(Action execute, Func<bool> canExecute = null)
         {
-            _execute = execute;
+            _execute = _ => execute();
+            _canExecute = _ => canExecute?.Invoke() ?? true;
+        }
+
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute)
+        {
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
         }
 

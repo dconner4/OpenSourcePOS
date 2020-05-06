@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalRepository.Migrations
 {
     [DbContext(typeof(LocalDatabaseContext))]
-    [Migration("20200504142528_Init")]
-    partial class Init
+    [Migration("20200506002215_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,8 +19,9 @@ namespace LocalRepository.Migrations
 
             modelBuilder.Entity("Models.InventoryItem", b =>
                 {
-                    b.Property<string>("Sku")
-                        .HasColumnType("TEXT");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Cost")
                         .HasColumnType("REAL");
@@ -34,10 +35,13 @@ namespace LocalRepository.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Sku")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Sku");
+                    b.HasKey("Id");
 
                     b.ToTable("InventoryItems");
                 });

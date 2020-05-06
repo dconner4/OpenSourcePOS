@@ -4,6 +4,11 @@
     {
 
         /// <summary>
+        /// The id of the record
+        /// </summary>
+        long Id { get; set; }
+
+        /// <summary>
         /// The sku number of the item.
         /// </summary>
         /// <example>

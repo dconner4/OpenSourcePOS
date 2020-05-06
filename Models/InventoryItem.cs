@@ -8,8 +8,12 @@ namespace Models
     /// </summary>
     public class InventoryItem : IItem
     {
+
         /// <inheritdoc cref="IItem"/>
         [Key]
+        public long Id { get; set; }
+
+        /// <inheritdoc cref="IItem"/>
         public string Sku { get; set; }
 
         /// <inheritdoc cref="IItem"/>

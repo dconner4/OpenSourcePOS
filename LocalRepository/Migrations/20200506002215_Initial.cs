@@ -2,7 +2,7 @@
 
 namespace LocalRepository.Migrations
 {
-    public partial class Init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,7 +10,9 @@ namespace LocalRepository.Migrations
                 name: "InventoryItems",
                 columns: table => new
                 {
-                    Sku = table.Column<string>(nullable: false),
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Sku = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Cost = table.Column<double>(nullable: false),
@@ -19,7 +21,7 @@ namespace LocalRepository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InventoryItems", x => x.Sku);
+                    table.PrimaryKey("PK_InventoryItems", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

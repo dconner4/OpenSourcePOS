@@ -21,7 +21,8 @@ namespace ViewModels
             InventoryList = new ObservableCollection<InventoryItem>(_inventoryRepository.GetInventoryItems());
             CurrentInventoryItem = InventoryList.FirstOrDefault();
 
-            AddOrUpdateInventoryItem = new AsyncRelayCommand(AddOrUpdateInventoryItemCommand);
+            CreateNewInventoryItemCommand= new RelayCommand(CreateNewInventoryItem);
+            AddOrUpdateInventoryItemCommand = new AsyncRelayCommand(AddOrUpdateInventoryItem);
         }
 
         private void AddItem()
@@ -45,9 +46,16 @@ namespace ViewModels
 
         public RelayCommand AddItemCommand { get; set; }
 
-        public AsyncRelayCommand AddOrUpdateInventoryItem { get; set; }
+        public RelayCommand CreateNewInventoryItemCommand { get; set; }
 
-        private async Task AddOrUpdateInventoryItemCommand()
+        public AsyncRelayCommand AddOrUpdateInventoryItemCommand { get; set; }
+
+        private void CreateNewInventoryItem()
+        {
+            int x = 0;
+        }
+
+        private async Task AddOrUpdateInventoryItem()
         {
             //Check if the item is in the database
             if (!_inventoryRepository.CheckInventoryItemExists(CurrentInventoryItem.Sku))

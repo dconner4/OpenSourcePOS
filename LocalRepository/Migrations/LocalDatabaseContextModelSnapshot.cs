@@ -17,8 +17,9 @@ namespace LocalRepository.Migrations
 
             modelBuilder.Entity("Models.InventoryItem", b =>
                 {
-                    b.Property<string>("Sku")
-                        .HasColumnType("TEXT");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Cost")
                         .HasColumnType("REAL");
@@ -32,10 +33,13 @@ namespace LocalRepository.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Sku")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Sku");
+                    b.HasKey("Id");
 
                     b.ToTable("InventoryItems");
                 });

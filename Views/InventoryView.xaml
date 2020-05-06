@@ -28,7 +28,10 @@
                   SelectedItem="{Binding CurrentInventoryItem}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="RowEditEnding">
-                    <i:InvokeCommandAction Command="{Binding AddOrUpdateInventoryItem}"/>
+                    <i:InvokeCommandAction Command="{Binding AddOrUpdateInventoryItemCommand}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="BeginningEdit">
+                    <i:InvokeCommandAction Command="{Binding CreateNewInventoryItemCommand}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <DataGrid.Columns>

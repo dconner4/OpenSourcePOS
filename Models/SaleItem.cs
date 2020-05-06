@@ -8,14 +8,15 @@ namespace Models
     /// </summary>
     public class SaleItem : IItem
     {
+        /// <inheritdoc cref="IItem"/>
         [Key]
         public long Id { get; set; }
 
         /// <inheritdoc cref="IItem"/>
         public string Sku { get; set; }
 
-        [MaxLength(ErrorMessage = "Title is to long. Must be no more than 128 characters")]
         /// <inheritdoc cref="IItem"/>
+        [MaxLength(ErrorMessage = "Title is to long. Must be no more than 128 characters")]
         public string Title { get; set; }
 
         /// <inheritdoc cref="IItem"/>
@@ -28,7 +29,7 @@ namespace Models
         public double Price { get; set; }
 
         /// <summary>
-        /// The price of the item mulitplied by the quantity being sold.
+        /// The price of the item multiplied by the quantity being sold.
         /// </summary>
         public double TotalPrice => Quantity * Price;
     }
