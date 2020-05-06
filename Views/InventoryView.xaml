@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:controls="clr-namespace:Microsoft;assembly=Microsoft.Toolkit"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
              xmlns:local="clr-namespace:Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding InventoryViewModel, Source={StaticResource ViewModelLocator}}">
@@ -19,17 +22,22 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0"
-                  ItemsSource="{Binding InventoryList}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Sku" Width="100" DisplayMemberBinding="{Binding Sku}"/>
-                    <GridViewColumn Header="Short Description"  Width="250" DisplayMemberBinding="{Binding Description}"/>
-                    <GridViewColumn Header="In-Stock Qty"  Width="75" DisplayMemberBinding="{Binding Quantity}"/>
-                    <GridViewColumn Header="Price" Width="75"  DisplayMemberBinding="{Binding Price}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid Grid.Column="0"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding InventoryList}"
+                  SelectedItem="{Binding CurrentInventoryItem}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="RowEditEnding">
+                    <i:InvokeCommandAction Command="{Binding AddOrUpdateInventoryItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn  Header="Sku" Binding="{Binding Sku, UpdateSourceTrigger=PropertyChanged}"/>
+                <materialDesign:DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}"/>
+                <materialDesign:DataGridTextColumn Header="In-Stock Qty" Binding="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"/>
+                <materialDesign:DataGridTextColumn Header="Price" Binding="{Binding Price, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <StackPanel Orientation="Vertical"
                     Grid.Column="1">
             <Button Style="{StaticResource NormalButton}" Command="{Binding NewInventoryItem}">Select Item</Button>

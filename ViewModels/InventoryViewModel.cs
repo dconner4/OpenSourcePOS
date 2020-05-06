@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Models;
 using Services;
@@ -6,7 +9,7 @@ using LocalRepository.Interfaces;
 
 namespace ViewModels
 {
-    public class InventoryViewModel
+    public class InventoryViewModel : BindableBase
     {
 
         private readonly IInventoryRepository _inventoryRepository;
@@ -15,7 +18,9 @@ namespace ViewModels
         {
             _inventoryRepository = inventoryRepository;
 
-            InventoryList = _inventoryRepository.GetInventoryItems();
+            InventoryList = new ObservableCollection<InventoryItem>(_inventoryRepository.GetInventoryItems());
+            CurrentInventoryItem = InventoryList.FirstOrDefault();
+
             AddOrUpdateInventoryItem = new AsyncRelayCommand(AddOrUpdateInventoryItemCommand);
         }
 
@@ -24,9 +29,19 @@ namespace ViewModels
 
         }
 
-        public IEnumerable<InventoryItem> InventoryList { get; set; }
+        public ObservableCollection<InventoryItem> InventoryList { get; set; }
 
-        public InventoryItem CurrentInventoryItem { get; set; }
+        private InventoryItem _currentInventoryItem;
+
+        public InventoryItem CurrentInventoryItem
+        {
+            get => _currentInventoryItem;
+            set
+            {
+                _currentInventoryItem = value;
+                OnPropertyChanged();
+            }
+        }
 
         public RelayCommand AddItemCommand { get; set; }
 
