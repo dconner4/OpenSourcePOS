@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalRepository.Migrations
 {
     [DbContext(typeof(LocalDatabaseContext))]
-    [Migration("20200506015716_Initial")]
+    [Migration("20200507003552_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,13 +36,10 @@ namespace LocalRepository.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Sku")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(125);
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -54,6 +51,9 @@ namespace LocalRepository.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<double>("Cost")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");

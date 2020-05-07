@@ -35,6 +35,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn  Header="Qty" Binding="{Binding TempQty, UpdateSourceTrigger=PropertyChanged}"/>
                 <materialDesign:DataGridTextColumn  Header="Sku" Binding="{Binding Sku, UpdateSourceTrigger=PropertyChanged}"/>
                 <materialDesign:DataGridTextColumn Header="Title" Binding="{Binding Title, UpdateSourceTrigger=PropertyChanged}"/>
                 <materialDesign:DataGridTextColumn Header="In-Stock Qty" Binding="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"/>
@@ -43,7 +44,7 @@
         </DataGrid>
         <StackPanel Orientation="Vertical"
                     Grid.Column="1">
-            <Button Style="{StaticResource NormalButton}" Command="{Binding NewInventoryItem}">Select Item</Button>
+            <Button Style="{StaticResource NormalButton}" Command="{Binding AddItemCommand}">Select Item</Button>
         </StackPanel>
     </Grid>
 </UserControl>

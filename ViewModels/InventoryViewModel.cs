@@ -13,18 +13,22 @@ namespace ViewModels
         // Dependency Injection
         private readonly IInventoryRepository _inventoryRepository;
 
+        private readonly ISalesRepository _salesRepository;
+
         // Fields
         private InventoryItem _currentInventoryItem;
 
-        public InventoryViewModel(IInventoryRepository inventoryRepository)
+        public InventoryViewModel(IInventoryRepository inventoryRepository, 
+            ISalesRepository salesRepository)
         {
             _inventoryRepository = inventoryRepository;
+            _salesRepository = salesRepository;
 
             InventoryList = new ObservableCollection<InventoryItem>(_inventoryRepository.GetInventoryItems());
             CurrentInventoryItem = InventoryList.FirstOrDefault();
 
             AddOrUpdateInventoryItemCommand = new AsyncRelayCommand(AddOrUpdateInventoryItem);
-            AddItemCommand = new RelayCommand(AddItem);
+            AddItemCommand = new AsyncRelayCommand(AddItem);
         }
 
         /// <summary>
@@ -33,7 +37,7 @@ namespace ViewModels
         public ObservableCollection<InventoryItem> InventoryList { get; set; }
 
         /// <summary>
-        /// 
+        /// The current selected inventory item
         /// </summary>
         public InventoryItem CurrentInventoryItem
         {
@@ -48,7 +52,7 @@ namespace ViewModels
         /// <summary>
         /// 
         /// </summary>
-        public RelayCommand AddItemCommand { get; set; }
+        public AsyncRelayCommand AddItemCommand { get; set; }
 
         /// <summary>
         /// 
@@ -57,9 +61,8 @@ namespace ViewModels
 
         #region Private Methods
         /// <summary>
-        /// 
+        /// Adds or updates the <see cref="CurrentInventoryItem"/> in the database
         /// </summary>
-        /// <returns></returns>
         private async Task AddOrUpdateInventoryItem()
         {
             //Check if the item is in the database
@@ -75,11 +78,17 @@ namespace ViewModels
         }
 
         /// <summary>
-        /// 
+        /// Adds or updates the current on going sale with the <see cref="CurrentInventoryItem"/>
         /// </summary>
-        private void AddItem()
+        private async Task AddItem()
         {
+            if (!_salesRepository.CheckIfSaleItemExists(CurrentInventoryItem.Sku))
+            {
+                await _salesRepository.AddSalesItem(CurrentInventoryItem);
+                return;
+            }
 
+            await _salesRepository.UpdateSaleQtyOnItem(CurrentInventoryItem.Sku, 1);
         }
         #endregion
     }

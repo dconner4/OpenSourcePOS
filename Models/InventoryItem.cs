@@ -9,36 +9,48 @@ namespace Models
     /// </summary>
     public class InventoryItem : IItem
     {
+        private int _tempQty;
 
         /// <inheritdoc cref="IItem"/>
-        [Key]
         public long Id { get; set; }
 
         /// <inheritdoc cref="IItem"/>
-        [Required]
         public string Sku { get; set; }
 
         /// <inheritdoc cref="IItem"/>
-        [Required]
-        [MaxLength(125, ErrorMessage = "Title is too long, please shorten it to less than 125 characters")]
         public string Title { get; set; }
 
         /// <inheritdoc cref="IItem"/>
         public string Description { get; set; }
 
-        /// <summary>
-        /// The cost of the item from the vendor.
-        /// </summary>
-        [Required]
+        /// <inheritdoc cref="IItem"/>
         public double Cost { get; set; }
 
         /// <inheritdoc cref="IItem"/>
-        [Required]
         public double Price { get; set; }
 
         /// <inheritdoc cref="IItem"/>
         public int Quantity { get; set; }
 
+        /// <summary>
+        /// The temporary quantity selected
+        /// </summary>
+        [NotMapped]
+        public int TempQty
+        {
+            get => _tempQty;
+            set
+            {
+                if (value > Quantity)
+                {
+                    Quantity -= Quantity;
+                    _tempQty = Quantity;
+                    return;
+                }
+
+                _tempQty = value;
+            }
+        }
         /// <summary>
         /// Indicates whether or not the record passed validation and can be saved
         /// </summary>

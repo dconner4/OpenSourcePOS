@@ -12,8 +12,8 @@ namespace LocalRepository.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Sku = table.Column<string>(nullable: false),
-                    Title = table.Column<string>(maxLength: 125, nullable: false),
+                    Sku = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Cost = table.Column<double>(nullable: false),
                     Price = table.Column<double>(nullable: false),
@@ -34,7 +34,8 @@ namespace LocalRepository.Migrations
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
-                    Price = table.Column<double>(nullable: false)
+                    Price = table.Column<double>(nullable: false),
+                    Cost = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {

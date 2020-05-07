@@ -30,6 +30,7 @@ namespace OpenSourcePOS
         private void RegisterRepositories(IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<IInventoryRepository, InventoryRepository>();
+            serviceCollection.AddSingleton<ISalesRepository, SalesRepository>();
         }
 
         private void RegisterServices()

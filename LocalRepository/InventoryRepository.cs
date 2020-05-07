@@ -21,8 +21,6 @@ namespace LocalRepository
         /// <inheritdoc cref="IInventoryRepository"/>
         public async Task AddInventoryItem(InventoryItem item)
         {
-            if (item == null && CheckInventoryItemExists(item.Sku)) return;
-
             using (var context = new LocalDatabaseContext())
             {
                 await context.InventoryItems.AddAsync(item);
@@ -32,8 +30,6 @@ namespace LocalRepository
 
         public async Task UpdateInventoryItem(InventoryItem item)
         {
-            if (item == null && !CheckInventoryItemExists(item.Sku)) return;
-
             using (var context = new LocalDatabaseContext())
             {
                 context.InventoryItems.Update(item);
@@ -45,7 +41,7 @@ namespace LocalRepository
         /// <inheritdoc cref="IInventoryRepository"/>
         public bool CheckInventoryItemExists(string sku)
         {
-            bool exists = false;
+            bool exists;
             using (var context = new LocalDatabaseContext())
             {
                 exists = context.InventoryItems.Any(x => x.Sku == sku);
