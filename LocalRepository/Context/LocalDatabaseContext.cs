@@ -28,5 +28,8 @@ namespace LocalRepository.Context
         /// The set of <see cref="InventoryItem"/> to query off of
         /// </summary>
         public DbSet<InventoryItem> InventoryItems { get; set; }
+
+
+        public DbSet<ReceiptHeader> ReceiptHeaders { get; set; }
     }
 }
