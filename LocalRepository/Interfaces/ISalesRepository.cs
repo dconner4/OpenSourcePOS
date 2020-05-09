@@ -9,6 +9,12 @@ namespace LocalRepository.Interfaces
     public interface ISalesRepository
     {
         /// <summary>
+        /// Gets the set of <see cref="SaleItem"/> from the database
+        /// </summary>
+        /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="SaleItem"/>s</returns>
+        IEnumerable<SaleItem> GetSaleItems();
+
+        /// <summary>
         /// Adds a new <see cref="SaleItem"/> to the database if one doesn't already exist
         /// </summary>
         /// <param name="item">The <see cref="InventoryItem"/> to add to the sale</param>

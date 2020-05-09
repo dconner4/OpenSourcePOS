@@ -1,8 +1,12 @@
-﻿using LocalRepository;
+﻿using System.IO.Ports;
+using LocalRepository;
 using LocalRepository.Context;
 using LocalRepository.Interfaces;
+using Microsoft.EntityFrameworkCore.Metadata;
 using ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using Services;
+using Services.Navigation;
 
 namespace OpenSourcePOS
 {
@@ -15,6 +19,8 @@ namespace OpenSourcePOS
 
         public InventoryViewModel InventoryViewModel => _serviceProvider.GetService(typeof(InventoryViewModel)) as InventoryViewModel;
 
+        public ShellViewModel ShellViewModel => _serviceProvider.GetService(typeof(ShellViewModel)) as ShellViewModel;
+
         private readonly ServiceProvider _serviceProvider;
 
         public ViewModelLocator()
@@ -22,6 +28,7 @@ namespace OpenSourcePOS
             IServiceCollection serviceCollection = new ServiceCollection();
 
             RegisterRepositories(serviceCollection);
+            RegisterServices(serviceCollection);
             RegisterViewModels(serviceCollection);
 
             _serviceProvider = serviceCollection.BuildServiceProvider();
@@ -33,9 +40,9 @@ namespace OpenSourcePOS
             serviceCollection.AddSingleton<ISalesRepository, SalesRepository>();
         }
 
-        private void RegisterServices()
+        private void RegisterServices(IServiceCollection serviceCollection)
         {
-
+            serviceCollection.AddSingleton<INavigator, Navigator>();
         }
 
         /// <summary>
@@ -46,6 +53,7 @@ namespace OpenSourcePOS
         {
             serviceCollection.AddSingleton(typeof(SalesViewModel));
             serviceCollection.AddSingleton(typeof(InventoryViewModel));
+            serviceCollection.AddSingleton(typeof(ShellViewModel));
         }
     }
 }

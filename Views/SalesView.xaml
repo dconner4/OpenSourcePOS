@@ -31,7 +31,7 @@
                       Grid.Row="0">  
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Item" Width="250" DisplayMemberBinding="{Binding Path=ShortDescription}"/>
+                        <GridViewColumn Header="Item" Width="250" DisplayMemberBinding="{Binding Path=Title}"/>
                         <GridViewColumn Header="#" Width="50" DisplayMemberBinding="{Binding Path=Quantity}"/>
                         <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding Path=Price}"/>
                         <GridViewColumn Header="Total Price" DisplayMemberBinding="{Binding Path=TotalPrice}"/>
@@ -51,6 +51,8 @@
         </Grid>
         <StackPanel Orientation="Vertical"
                     Grid.Column="1">
+            <Button Command="{Binding AddItemCommand}"
+                    Style="{StaticResource NormalButton}">Add Item</Button>
             <Button Style="{StaticResource NormalButton}">Tender</Button>
         </StackPanel>
     </Grid>

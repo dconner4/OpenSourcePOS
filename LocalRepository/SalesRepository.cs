@@ -1,13 +1,24 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LocalRepository.Context;
 using LocalRepository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace LocalRepository
 {
     public class SalesRepository : ISalesRepository
     {
+        /// <inheritdoc cref="ISalesRepository"/>
+        public IEnumerable<SaleItem> GetSaleItems()
+        {
+            using (var context = new LocalDatabaseContext())
+            {
+                context.SalesItems.Load();
+                return context.SalesItems.ToList();
+            }
+        } 
 
         /// <inheritdoc cref="ISalesRepository"/>
         public async Task AddSalesItem(InventoryItem item)

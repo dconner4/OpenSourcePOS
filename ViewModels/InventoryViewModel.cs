@@ -4,35 +4,47 @@ using System.Threading.Tasks;
 using Models;
 using Services;
 using LocalRepository.Interfaces;
+using Services.Navigation;
 
 namespace ViewModels
 {
-    public class InventoryViewModel : BindableBase
+    public class InventoryViewModel : BindableBase, IPageViewModel
     {
 
         // Dependency Injection
         private readonly IInventoryRepository _inventoryRepository;
-
         private readonly ISalesRepository _salesRepository;
+        private readonly INavigator _navigator;
 
         // Fields
         private InventoryItem _currentInventoryItem;
 
         public InventoryViewModel(IInventoryRepository inventoryRepository, 
-            ISalesRepository salesRepository)
+            ISalesRepository salesRepository,
+            INavigator navigator)
         {
             _inventoryRepository = inventoryRepository;
             _salesRepository = salesRepository;
+            _navigator = navigator;
 
-            InventoryList = new ObservableCollection<InventoryItem>(_inventoryRepository.GetInventoryItems());
-            CurrentInventoryItem = InventoryList.FirstOrDefault();
+            //InventoryList = new ObservableCollection<InventoryItem>(_inventoryRepository.GetInventoryItems());
+            //CurrentInventoryItem = InventoryList.FirstOrDefault();
 
             AddOrUpdateInventoryItemCommand = new AsyncRelayCommand(AddOrUpdateInventoryItem);
             AddItemCommand = new AsyncRelayCommand(AddItem);
         }
 
+        /// <inheritdoc cref="IPageViewModel"/>
+        public string Name => nameof(InventoryViewModel);
+
+        public void OnNavigated()
+        {
+            InventoryList = new ObservableCollection<InventoryItem>(_inventoryRepository.GetInventoryItems());
+            CurrentInventoryItem = InventoryList.FirstOrDefault();
+        }
+
         /// <summary>
-        /// 
+        /// The collection of <see cref="InventoryItem"/> in the database
         /// </summary>
         public ObservableCollection<InventoryItem> InventoryList { get; set; }
 
@@ -50,7 +62,7 @@ namespace ViewModels
         }
 
         /// <summary>
-        /// 
+        /// Command to add an <see cref="InventoryItem"/> to the current on-going sale
         /// </summary>
         public AsyncRelayCommand AddItemCommand { get; set; }
 
@@ -85,10 +97,13 @@ namespace ViewModels
             if (!_salesRepository.CheckIfSaleItemExists(CurrentInventoryItem.Sku))
             {
                 await _salesRepository.AddSalesItem(CurrentInventoryItem);
-                return;
+            }
+            else
+            {
+                await _salesRepository.UpdateSaleQtyOnItem(CurrentInventoryItem.Sku, CurrentInventoryItem.TempQty);
             }
 
-            await _salesRepository.UpdateSaleQtyOnItem(CurrentInventoryItem.Sku, 1);
+            _navigator.OnChangeViewModel($"{nameof(SalesViewModel)}");
         }
         #endregion
     }
