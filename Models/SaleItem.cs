@@ -1,5 +1,4 @@
 ﻿using Models.Interfaces;
-using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
@@ -8,13 +7,23 @@ namespace Models
     /// </summary>
     public class SaleItem : IItem
     {
-        [Key]
+        public SaleItem() {}
+        
+        public SaleItem(InventoryItem item)
+        {
+            Sku = item.Sku;
+            Title = item.Title;
+            Description = item.Description;
+            Price = item.Price;
+            Cost = item.Cost;
+        }
+
+        /// <inheritdoc cref="IItem"/>
         public long Id { get; set; }
 
         /// <inheritdoc cref="IItem"/>
         public string Sku { get; set; }
 
-        [MaxLength(ErrorMessage = "Title is to long. Must be no more than 128 characters")]
         /// <inheritdoc cref="IItem"/>
         public string Title { get; set; }
 
@@ -27,8 +36,11 @@ namespace Models
         /// <inheritdoc cref="IItem"/>
         public double Price { get; set; }
 
+        /// <inheritdoc cref="IItem"/>
+        public double Cost { get; set; }
+
         /// <summary>
-        /// The price of the item mulitplied by the quantity being sold.
+        /// The price of the item multiplied by the quantity being sold.
         /// </summary>
         public double TotalPrice => Quantity * Price;
     }

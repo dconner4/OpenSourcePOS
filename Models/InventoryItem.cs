@@ -1,5 +1,6 @@
 ﻿using Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
@@ -8,8 +9,12 @@ namespace Models
     /// </summary>
     public class InventoryItem : IItem
     {
+        private int _tempQty;
+
         /// <inheritdoc cref="IItem"/>
-        [Key]
+        public long Id { get; set; }
+
+        /// <inheritdoc cref="IItem"/>
         public string Sku { get; set; }
 
         /// <inheritdoc cref="IItem"/>
@@ -18,9 +23,7 @@ namespace Models
         /// <inheritdoc cref="IItem"/>
         public string Description { get; set; }
 
-        /// <summary>
-        /// The cost of the item from the vendor.
-        /// </summary>
+        /// <inheritdoc cref="IItem"/>
         public double Cost { get; set; }
 
         /// <inheritdoc cref="IItem"/>
@@ -28,5 +31,30 @@ namespace Models
 
         /// <inheritdoc cref="IItem"/>
         public int Quantity { get; set; }
+
+        /// <summary>
+        /// The temporary quantity selected
+        /// </summary>
+        [NotMapped]
+        public int TempQty
+        {
+            get => _tempQty;
+            set
+            {
+                if (value > Quantity)
+                {
+                    Quantity -= Quantity;
+                    _tempQty = Quantity;
+                    return;
+                }
+
+                _tempQty = value;
+            }
+        }
+        /// <summary>
+        /// Indicates whether or not the record passed validation and can be saved
+        /// </summary>
+        [NotMapped]
+        public bool PassesValidation => !string.IsNullOrWhiteSpace(Sku);
     }
 }

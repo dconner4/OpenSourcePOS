@@ -3,14 +3,16 @@ using System;
 using LocalRepository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocalRepository.Migrations
 {
     [DbContext(typeof(LocalDatabaseContext))]
-    partial class LocalDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200508000007_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
